@@ -142,3 +142,10 @@ let g:syntastic_check_on_open=1
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+"" CtrlP
+map <leader>t :CtrlP<cr>
+map <leader>b :CtrlPBuffer<cr>
+let g:ctrlp_working_path_mode=2
+set wildignore+=*/*.swp
+let g:ctrlp_custom_ignore = '\v[\/]((\.(git|hg|svn))|(vendor/bundle)|(bin/stubs))$'

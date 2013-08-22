@@ -28,3 +28,6 @@
 [submodule "home/.vim/bundle/vim-tomorrow-theme"]
 	path = home/.vim/bundle/vim-tomorrow-theme
 	url = git@github.com:chriskempson/vim-tomorrow-theme.git
+[submodule "home/.vim/bundle/ag.vim"]
+	path = home/.vim/bundle/ag.vim
+	url = git@github.com:rking/ag.vim.git
