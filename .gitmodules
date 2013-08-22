@@ -31,3 +31,6 @@
 [submodule "home/.vim/bundle/ag.vim"]
 	path = home/.vim/bundle/ag.vim
 	url = git@github.com:rking/ag.vim.git
+[submodule "home/.vim/bundle/vim-rspec"]
+	path = home/.vim/bundle/vim-rspec
+	url = git@github.com:thoughtbot/vim-rspec.git
