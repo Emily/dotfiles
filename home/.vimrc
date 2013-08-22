@@ -15,6 +15,12 @@ set showcmd       " display incomplete commands
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 
+set t_Co=256
+set background=dark
+colorscheme Tomorrow-Night
+set colorcolumn=80
+:hi ColorColumn ctermbg=red guibg=red
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
