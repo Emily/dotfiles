@@ -116,6 +116,7 @@ nnoremap <Down> :echoe "Use j"<CR>
 nnoremap <Leader>S :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>l :call RunLastSpec()<CR>
+let g:rspec_command = "!time bin/**/rspec {spec}"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
