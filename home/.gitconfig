@@ -1,7 +1,17 @@
 [push]
   default = current
 [color]
+  branch = auto
+  status = auto
+  diff = auto
+  grep = auto
+  interactive = auto
+  show-branch = auto
   ui = auto
+[pager]
+  status = true
+[branch]
+  autosetupmerge = true
 [alias]
   url =! bash -c 'git config --get remote.origin.url | sed -E "s/.+:\\(.+\\)\\.git$/https:\\\\/\\\\/github\\\\.com\\\\/\\\\1/g"'
   lg = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=relative
@@ -12,16 +22,29 @@
   co = checkout
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  df = diff
+  dfc = diff --check
+  dff = diff -b --color-words
+  dc = diff --cached
   merge-branch = !git checkout master && git merge @{-1}
   pr = !hub pull-request
+  rb = pull --rebase
   st = status
   up = !git fetch origin && git rebase origin/master
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   h = !git head
+  who = shortlog -s --
+  pom = push origin master
+  rhom = reset --hard origin/master
+  rom = rebase origin/master
+  fixup = commit --amend -C HEAD
 [core]
-  excludesfile = ~/.gitignore
+  excludesfile = ~/.gitignore_global
   autocrlf = input
+  pager = less
 [merge]
   ff = only
 [include]
   path = .gitconfig.local
+[rerere]
+  enabled = 1
