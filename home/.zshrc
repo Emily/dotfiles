@@ -12,10 +12,6 @@ done
 # automatically enter directories without cd
 setopt auto_cd
 
-# don't autocorrect
-unsetopt correct_all
-unsetopt correct
-
 # use vim as the visual editor
 export VISUAL=vim
 export EDITOR=$VISUAL
@@ -59,8 +55,9 @@ setopt AUTOCD
 setopt AUTOPUSHD PUSHDMINUS PUSHDSILENT PUSHDTOHOME
 setopt cdablevars
 
-# Try to correct command line spelling
-setopt CORRECT CORRECT_ALL
+# don't autocorrect
+unsetopt correct_all
+unsetopt correct
 
 # Enable extended globbing
 setopt EXTENDED_GLOB
