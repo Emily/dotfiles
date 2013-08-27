@@ -129,6 +129,9 @@ nnoremap <Leader>z :call RunLastSpec()<CR>
 nnoremap <Leader>Z :call RunAllSpecs()<CR>
 let g:rspec_command = "!time bin/**/rspec {spec}"
 
+map <Leader>X :let g:rspec_command = "!time bin/**/rspec {spec}"<CR>
+map <Leader>x :let g:rspec_command = "call Send_to_Tmux(\"bin/**/rspec {spec}\n\")"<CR>
+
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
@@ -164,7 +167,7 @@ function! GitStripSpace()
   call setpos('.', l:save_cursor)
 endfunction! GitStripSpace()
 
-autocmd Filetype ruby autocmd BugWritePre * call GitStripSpace()
+autocmd Filetype ruby autocmd BufWritePre * call GitStripSpace()
 
 " Spliting
 map <leader>\| :vsp<cr>
