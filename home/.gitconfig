@@ -17,6 +17,7 @@
   lg = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%cr)%Creset %s%C(yellow)%d%Creset' --abbrev-commit --date=relative
   aa = add --all
   ap = add --patch
+  br = branch
   ca = commit --amend
   ci = commit -v
   co = checkout
