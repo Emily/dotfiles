@@ -62,3 +62,10 @@ alias vi=vim
 
 # ag
 alias ag="ag --color --smart-case -U"
+
+# lazy cd aliases
+alias cd..="cd .."
+alias cd...="cd ../.."
+alias cd....="cd ../../.."
+alias cd.....="cd ../../../.."
+alias cd......="cd ../../../../.."
