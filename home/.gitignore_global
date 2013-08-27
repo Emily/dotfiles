@@ -1,0 +1,67 @@
+# osx
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# sublime
+/*.sublime-project
+
+# ctags
+TAGS
+tags
+
+# textmate
+*.tmproj
+*.tmproject
+tmtags
+
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+
+# haskell
+dist
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+
+# rails
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+/.bundle
+/vendor/bundle
+/log/*
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+**.orig
+rerun.txt
+pickle-email-*.html
+
+# ruby
+*.gem
+*.rbc
+.bundle
+.config
+coverage
+InstalledFiles
+lib/bundler/man
+pkg
+rdoc
+spec/reports
+test/tmp
+test/version_tmp
+tmp
+.yardoc
+_yardoc
+doc/
+vendor/bundle
+bin/stubs

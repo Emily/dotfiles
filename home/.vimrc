@@ -12,14 +12,23 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete commands
+set hlsearch
 set incsearch     " do incremental searching
+set ignorecase
+set smartcase
 set laststatus=2  " Always display the status line
+set encoding=utf-8
+set scrolloff=3
 
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 set colorcolumn=80
 :hi ColorColumn ctermbg=red guibg=red
+set cursorline
+
+" Whitespace
+set nowrap
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -62,6 +71,7 @@ augroup END
 set tabstop=2
 set shiftwidth=2
 set expandtab
+set backspace=indent,eol,start
 
 " Display extra whitespace
 "set list listchars=tab:»·,trail:·
@@ -115,7 +125,8 @@ nnoremap <Down> :echoe "Use j"<CR>
 " vim-rspec mappings
 nnoremap <Leader>S :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
+nnoremap <Leader>z :call RunLastSpec()<CR>
+nnoremap <Leader>Z :call RunAllSpecs()<CR>
 let g:rspec_command = "!time bin/**/rspec {spec}"
 
 " Treat <li> and <p> tags like the block tags they are
@@ -145,3 +156,17 @@ map <leader>b :CtrlPBuffer<cr>
 let g:ctrlp_working_path_mode=2
 set wildignore+=*/*.swp
 let g:ctrlp_custom_ignore = '\v[\/]((\.(git|hg|svn))|(vendor/bundle)|(bin/stubs))$'
+
+"" Cleanup ruby files on save
+function! GitStripSpace()
+  let l:save_cursor = getpos(".")
+  silent! %!git stripspace
+  call setpos('.', l:save_cursor)
+endfunction! GitStripSpace()
+
+autocmd Filetype ruby autocmd BugWritePre * call GitStripSpace()
+
+" Spliting
+map <leader>\| :vsp<cr>
+map <leader>- :sp<cr>
+map <leader>_ :23sp<cr>
