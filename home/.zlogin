@@ -1,10 +1,4 @@
-# adds the current branch name in green
-git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null)
-  if [[ -n $ref ]]; then
-    echo "[%{$fg_bold[green]%}${ref#refs/heads/}%{$reset_color%}]"
-  fi
-}
+source .zsh/lib/git.zsh
 
 # makes color constants available
 autoload -U colors
@@ -17,7 +11,13 @@ export CLICOLOR=1
 setopt prompt_subst
 
 # prompt
-export PS1='[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$fg_bold[blue]%}%~%{$reset_color%}]$(git_prompt_info) '
+export PS1='[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m"}%{$reset_color%}] [%{$fg_bold[blue]%}%~%{$reset_color%}] $(git_prompt_info)
+${fg[white]}λ %{$reset_color%}'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
+ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%} "
+ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}*%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
