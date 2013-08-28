@@ -173,3 +173,8 @@ autocmd Filetype ruby autocmd BufWritePre * call GitStripSpace()
 map <leader>\| :vsp<cr>
 map <leader>- :sp<cr>
 map <leader>_ :23sp<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Open current line in github
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs open<CR><CR>
