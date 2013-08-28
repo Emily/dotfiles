@@ -28,6 +28,9 @@
   dff = diff -b --color-words
   dc = diff --cached
   fa = fetch --all
+  ln = log --oneline
+  l = log --graph --abbrev-commit --date=relative
+  la = !git l --all
   merge-branch = !git checkout master && git merge @{-1}
   pr = !hub pull-request
   rb = pull --rebase
