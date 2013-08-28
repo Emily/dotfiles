@@ -1,4 +1,4 @@
-source .zsh/lib/git.zsh
+source ~/.zsh/lib/git.zsh
 
 # makes color constants available
 autoload -U colors

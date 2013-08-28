@@ -57,13 +57,13 @@ setopt EXTENDED_GLOB
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
 if [ -e /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
 fi
+
+# Local config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 
 if [[ ! $TERM =~ screen ]]; then
   tmux attach || tmux new
