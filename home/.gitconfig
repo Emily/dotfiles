@@ -27,6 +27,7 @@
   dfc = diff --check
   dff = diff -b --color-words
   dc = diff --cached
+  fa = fetch --all
   merge-branch = !git checkout master && git merge @{-1}
   pr = !hub pull-request
   rb = pull --rebase
