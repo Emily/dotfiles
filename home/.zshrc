@@ -26,6 +26,10 @@ bindkey -e
 # use incremental search
 bindkey "^R" history-incremental-search-backward
 
+# smart history using up/down arrows
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
+
 # expand functions in the prompt
 setopt prompt_subst
 
