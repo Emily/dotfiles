@@ -30,6 +30,9 @@ bindkey "^R" history-incremental-search-backward
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
+# bind ctrl+b to beginning of line since tmux has ctrl+a
+bindkey "^B" beginning-of-line
+
 # expand functions in the prompt
 setopt prompt_subst
 
