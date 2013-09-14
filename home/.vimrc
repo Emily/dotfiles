@@ -19,6 +19,7 @@ set smartcase
 set laststatus=2  " Always display the status line
 set encoding=utf-8
 set scrolloff=3
+set hidden " allow switching from unsaved file without saving
 
 set t_Co=256
 set background=dark
