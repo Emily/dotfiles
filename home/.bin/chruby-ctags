@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+generate_ctags_in() {
+  echo "Running ctags on $1"
+  (cd "$1"; ctags -R --languages=ruby)
+}
+
+generate_ctags_for() {
+  if [ -w "$1/lib/ruby" ]; then
+    for dir in \
+      "$1"/lib/ruby/[0-9]* \
+      "$1"/lib/ruby/shared*
+    do
+      generate_ctags_in "$dir"
+    done
+    for dir in \
+      "$1"/lib/ruby/site_ruby/[0-9]* \
+      "$1"/lib/ruby/vendor_ruby/[0-9]*
+    do
+      [ "$(find "$dir" -name '*.rb'|wc -l)" = 0 ] || generate_ctags_in "$dir"
+    done
+  elif [ -w "$1/lib" ]; then
+    generate_ctags_in "$1/lib"
+  else
+    echo "No directories for ctags found in $1" >&2
+    return 1
+  fi
+}
+
+generate_ctags_for $1
