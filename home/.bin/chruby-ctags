@@ -11,13 +11,17 @@ generate_ctags_for() {
       "$1"/lib/ruby/[0-9]* \
       "$1"/lib/ruby/shared*
     do
-      generate_ctags_in "$dir"
+      if [ -w $dir ]; then
+        generate_ctags_in "$dir"
+      fi
     done
     for dir in \
       "$1"/lib/ruby/site_ruby/[0-9]* \
       "$1"/lib/ruby/vendor_ruby/[0-9]*
     do
-      [ "$(find "$dir" -name '*.rb'|wc -l)" = 0 ] || generate_ctags_in "$dir"
+      if [ -w $dir ]; then
+        [ "$(find "$dir" -name '*.rb'|wc -l)" = 0 ] || generate_ctags_in "$dir"
+      fi
     done
   elif [ -w "$1/lib" ]; then
     generate_ctags_in "$1/lib"
