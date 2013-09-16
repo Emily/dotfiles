@@ -182,3 +182,6 @@ nnoremap <leader>o :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<
 
 " make ctrl+c match esc (visual block mode doesn't like ctrl+c)
 map <c-c> <esc>
+
+" enable builtin matchit.vim
+runtime macros/matchit.vim
