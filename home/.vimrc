@@ -76,6 +76,9 @@ set backspace=indent,eol,start
 
 " Display extra whitespace
 "set list listchars=tab:»·,trail:·
+"
+" Pressing return clears highlighted search
+nnoremap <CR> :nohlsearch<CR>/<BS>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
