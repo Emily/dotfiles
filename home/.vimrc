@@ -190,3 +190,6 @@ map <c-c> <esc>
 
 " enable builtin matchit.vim
 runtime macros/matchit.vim
+
+" run current file via ruby
+map <leader>, :!ruby %<CR>
