@@ -21,3 +21,6 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""
 
 # load thoughtbot/dotfiles scripts
 export PATH="$HOME/.bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

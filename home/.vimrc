@@ -20,6 +20,11 @@ set laststatus=2  " Always display the status line
 set encoding=utf-8
 set scrolloff=3
 set hidden " allow switching from unsaved file without saving
+set autowrite
+
+if &diff
+  set diffopt+=iwhite
+endif
 
 set t_Co=256
 set background=dark
