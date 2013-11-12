@@ -24,3 +24,6 @@ export PATH="$HOME/.bin:$PATH"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Local config
+[[ -f ~/.zlogin.local ]] && source ~/.zlogin.local
