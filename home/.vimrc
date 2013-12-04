@@ -82,15 +82,6 @@ set backspace=indent,eol,start
 " Display extra whitespace
 "set list listchars=tab:»·,trail:·
 
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-endif
-
 " Numbers
 set number
 set numberwidth=5
@@ -133,7 +124,11 @@ nnoremap <Leader>S :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>z :call RunLastSpec()<CR>
 nnoremap <Leader>Z :call RunAllSpecs()<CR>
-let g:rspec_command = "!time bin/**/rspec {spec}"
+if filereadable("script/spec")
+  let g:rspec_command = "!time bundle exec spec {spec}"
+else
+  let g:rspec_command = "!time bin/**/rspec {spec}"
+end
 
 map <Leader>X :let g:rspec_command = "!time bin/**/rspec {spec}"<CR>
 map <Leader>x :let g:rspec_command = "call Send_to_Tmux(\"bin/**/rspec {spec}\n\")"<CR>
@@ -153,11 +148,6 @@ nnoremap <C-l> <C-w>l
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif
 
 "" CtrlP
 map <leader>t :CtrlP<cr>
@@ -193,3 +183,38 @@ runtime macros/matchit.vim
 
 " run current file via ruby
 map <leader>, :!ruby %<CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Silver Searcher for faster grep and ctrl-p
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+  " bind K to grep word under cursor
+  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " bind \ (backward slash) to grep shortcut
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  nnoremap \ :Ag<SPACE>
+endif
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEEP THIS AT THE BOTTOM OF THE FILE
+" Local config
+"
+if filereadable($HOME . "/.vimrc.local")
+  source ~/.vimrc.local
+endif
