@@ -42,7 +42,7 @@
   pom = push origin master
   rhom = reset --hard origin/master
   rom = rebase origin/master
-  fixup = commit --amend -C HEAD
+  fixup = commit --amend -C HEAD --reset-author
 [core]
   excludesfile = ~/.gitignore_global
   autocrlf = input
