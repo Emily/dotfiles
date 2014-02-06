@@ -128,13 +128,21 @@ nnoremap <Down> :echoe "Use j"<CR>
 " vim-rspec mappings
 nnoremap <Leader>S :call RunCurrentSpecFile()<CR>
 nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>z :call RunLastSpec()<CR>
+nnoremap <Leader>z :call RunFastSpec()<CR>
 nnoremap <Leader>Z :call RunAllSpecs()<CR>
+
 if filereadable("script/spec")
   let g:rspec_command = "!time bundle exec spec {spec}"
 else
   let g:rspec_command = "!time bin/**/rspec {spec}"
 end
+
+function! RunFastSpec()
+  let g:old_rspec_command = g:rspec_command
+  let g:rspec_command = "!time rspec {spec}"
+  call RunNearestSpec()
+  let g:rspec_command = g:old_rspec_command
+endfunction
 
 map <Leader>X :let g:rspec_command = "!time bin/**/rspec {spec}"<CR>
 map <Leader>x :let g:rspec_command = "call Send_to_Tmux(\"bin/**/rspec {spec}\n\")"<CR>
