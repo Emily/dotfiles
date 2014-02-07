@@ -26,9 +26,6 @@ if &diff
   set diffopt+=iwhite
 endif
 
-"" Set _ as a word boundry
-set iskeyword-=_
-
 set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
