@@ -24,7 +24,7 @@
 	url = git@github.com:bronson/vim-trailing-whitespace.git
 [submodule "home/.vim/bundle/vim-matchit"]
 	path = home/.vim/bundle/vim-matchit
-	url = git@github.com:tsaleh/vim-matchit.git
+	url = git@github.com:edsono/vim-matchit.git
 [submodule "home/.vim/bundle/vim-tomorrow-theme"]
 	path = home/.vim/bundle/vim-tomorrow-theme
 	url = git@github.com:chriskempson/vim-tomorrow-theme.git
