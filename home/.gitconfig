@@ -35,6 +35,7 @@
   pr = !hub pull-request
   rb = pull --rebase
   st = status
+  unstage = reset HEAD --
   up = !git fetch origin && git rebase origin/master
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   h = !git head
