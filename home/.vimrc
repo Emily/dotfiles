@@ -32,6 +32,7 @@ colorscheme solarized
 set colorcolumn=80
 :hi ColorColumn ctermbg=red guibg=red
 set cursorline
+call togglebg#map("<Leader>B")
 
 " Whitespace
 set nowrap
