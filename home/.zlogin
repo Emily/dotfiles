@@ -12,7 +12,7 @@ setopt prompt_subst
 
 # prompt
 export PS1='[${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m"}%{$reset_color%}] [%{$fg_bold[blue]%}%~%{$reset_color%}] $(git_prompt_info) 
-%{$fg[white]%}λ %{$reset_color%}'
+%{$reset_color%}λ '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
 ZSH_THEME_GIT_PROMPT_SUFFIX="]%{$reset_color%} "

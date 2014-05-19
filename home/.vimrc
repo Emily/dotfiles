@@ -28,7 +28,7 @@ endif
 
 set t_Co=256
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme solarized
 set colorcolumn=80
 :hi ColorColumn ctermbg=red guibg=red
 set cursorline
