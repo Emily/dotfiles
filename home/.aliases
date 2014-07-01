@@ -36,10 +36,10 @@ alias s="rspec"
 alias z="zeus"
 
 # ls
-alias ls="ls -F --color"
-alias l="ls -lAh --color"
-alias ll="ls -l --color"
-alias la='ls -A --color'
+alias ls="ls -FLGH"
+alias l="ls -lAhLGH"
+alias ll="ls -lLGH"
+alias la='ls -ALGH'
 
 # git
 alias gl='git pull'
