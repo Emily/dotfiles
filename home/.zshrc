@@ -71,7 +71,6 @@ fi
 
 # speed up ruby tests
 export RUBY_GC_MALLOC_LIMIT=90000000
-export RUBY_FREE_MIN=200000
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
