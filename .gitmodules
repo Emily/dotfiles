@@ -39,7 +39,7 @@
 	url = https://github.com/myusuf3/numbers.vim.git
 [submodule "home/.vim/bundle/tslime.vim"]
 	path = home/.vim/bundle/tslime.vim
-	url = https://github.com/jgdavey/tslime.vim.git
+	url = https://github.com/emily/tslime.vim.git
 [submodule "home/.vim/bundle/vim-coffee-script"]
 	path = home/.vim/bundle/vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git

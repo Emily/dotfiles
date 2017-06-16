@@ -128,6 +128,8 @@ nnoremap <Leader>s :call RunNearestSpec()<CR>
 nnoremap <Leader>z :call RunFastSpec()<CR>
 nnoremap <Leader>Z :call RunAllSpecs()<CR>
 
+nnoremap <Leader>x :unlet g:tslime<CR>
+
 if filereadable("script/spec")
   let g:rspec_command = "!time bundle exec spec {spec}"
 else
@@ -141,8 +143,7 @@ function! RunFastSpec()
   let g:rspec_command = g:old_rspec_command
 endfunction
 
-map <Leader>X :let g:rspec_command = "!time bin/**/rspec {spec}"<CR>
-map <Leader>x :let g:rspec_command = "call Send_to_Tmux(\"bin/**/rspec {spec}\n\")"<CR>
+let g:rspec_command = "call Send_to_Tmux(\"bundle exec rspec {spec}\n\")"
 
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
