@@ -29,6 +29,16 @@ bindkey "^R" history-incremental-search-backward
 # smart history using up/down arrows
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
+bindkey '\e[1~' beginning-of-line
+bindkey '\e[4~' end-of-line
+bindkey '\e[5~' history-search-backward
+bindkey '\e[6~' history-search-forward
+bindkey '\e[3~' delete-char
+bindkey '\e[2~' quoted-insert
+bindkey '\e[5C' forward-word
+bindkey '\e[5D' backward-word
+bindkey '\e\e[C' forward-word
+bindkey '\e\e[D' backward-word
 
 # bind ctrl+b to beginning of line since tmux has ctrl+a
 bindkey "^B" beginning-of-line
@@ -74,7 +84,3 @@ export RUBY_GC_MALLOC_LIMIT=90000000
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
-
-if [[ ! $TERM =~ screen ]]; then
-  tmux attach || tmux new
-fi
