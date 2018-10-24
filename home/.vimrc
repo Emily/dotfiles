@@ -1,7 +1,7 @@
 "" Pathogen
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
-
+" let g:tsuquyomi_disable_default_mappings = 1
 " Leader
 let mapleader = ","
 
@@ -26,7 +26,7 @@ if &diff
   set diffopt+=iwhite
 endif
 
-set t_Co=256
+" set t_Co=256
 set background=dark
 colorscheme Tomorrow-Night
 set colorcolumn=80
@@ -161,6 +161,8 @@ nnoremap <C-l> <C-w>l
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
 
+let g:tsuquyomi_disable_quickfix = 1
+
 "" CtrlP
 map <leader>t :CtrlP<cr>
 map <leader>b :CtrlPBuffer<cr>
@@ -199,22 +201,32 @@ map <leader>, :!ruby %<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Silver Searcher for faster grep and ctrl-p
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+" if executable('ag')
+"   " Use ag over grep
+"   set grepprg=ag\ --nogroup\ --nocolor
 
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
-  " ag is fast enough that CtrlP doesn't need to cache
+"   " ag is fast enough that CtrlP doesn't need to cache
+"   let g:ctrlp_use_caching = 0
+"   " bind K to grep word under cursor
+"   nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+"   " bind \ (backward slash) to grep shortcut
+"   command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+"   nnoremap \ :Ag<SPACE>
+" endif
+if executable('rg')
+  set grepprg=rg\ --color=never\ --no-heading\ --smart-case\ --vimgrep
+  let g:ctrlp_user_command = 'rg %s --files --color=never --glob=""'
   let g:ctrlp_use_caching = 0
-  " bind K to grep word under cursor
-  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-  " bind \ (backward slash) to grep shortcut
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-  nnoremap \ :Ag<SPACE>
+  command -nargs=+ -complete=file -bar Rg execute ":AsyncRun rg --color=never --no-heading --smart-case --vimgrep \<args>"
+  map <leader>\ :AsyncStop<SPACE><CR>
+  nnoremap \ :Rg<SPACE>
 endif
+
+let g:asyncrun_open = 8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -230,3 +242,5 @@ endif
 if filereadable($HOME . "/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+map <Space><C-]> <Plug>(TsuquyomiReferences)
